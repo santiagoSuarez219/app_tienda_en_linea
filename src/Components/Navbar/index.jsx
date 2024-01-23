@@ -34,7 +34,7 @@ const Navbar = () => {
         <ul
           className={`fixed inset-0 bg-menu-color px-[5%] flex flex-col gap-4 justify-center items-center clip-circle-0 ${
             openMenu && `clip-circle-full`
-          } transition-[clip-path] duration-500 z-20 md:clip-circle-full md:relative md:flex-row md:bg-transparent md:px-4 lg:w-full`}
+          } transition-[clip-path] duration-500 z-20 md:clip-circle-full md:relative md:flex-row md:bg-transparent md:px-4 lg:w-full md:text-sm`}
         >
           <li>All</li>
           <li>Clothes</li>
@@ -55,7 +55,7 @@ const Navbar = () => {
                 className=" text-white"
                 onClick={() => openCheckoutSideMenu()}
               />
-              <p className="absolute -right-3 -top-1 bg-card-color w-5 h-5 rounded-full flex items-center justify-center">
+              <p className="absolute -right-3 -top-1 bg-card-color w-5 h-5 rounded-full flex items-center justify-center text-gray-color">
                 {count}
               </p>
             </div>

@@ -10,7 +10,7 @@ const CardButton = () => {
         className="w-full h-full text-white"
         onClick={() => openCheckoutSideMenu()}
       />
-      <p className="absolute right-0 top-0 bg-card-color w-5 h-5 rounded-full flex items-center justify-center">
+      <p className="absolute right-0 top-0 bg-card-color w-5 h-5 rounded-full flex items-center justify-center text-gray-color">
         {count}
       </p>
     </div>
