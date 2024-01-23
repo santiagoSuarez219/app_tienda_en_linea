@@ -6,7 +6,8 @@ import MyOrders from "../MyOrders";
 import SignIn from "../SignIn";
 import NotFound from "../NotFound";
 import Navbar from "../../Components/Navbar";
-import Tabbar from "../../Components/Tabbar";
+import CardButton from "../../Components/CardButton";
+import { AppProvider } from "../../AppContext";
 
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -24,9 +25,11 @@ const AppRoutes = () => {
 const App = () => {
   return (
     <BrowserRouter>
-      <AppRoutes />
-      <Tabbar />
-      <Navbar />
+      <AppProvider>
+        <AppRoutes />
+        <CardButton />
+        <Navbar />
+      </AppProvider>
     </BrowserRouter>
   );
 };

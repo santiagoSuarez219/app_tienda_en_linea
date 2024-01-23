@@ -1,8 +1,12 @@
+import { useContext } from "react";
+import { AppContext } from "../../AppContext";
+
 const Card = (data) => {
+  const { setCount, count } = useContext(AppContext);
   return (
     <div className="bg-card-color cursor-pointer w-56 mx-auto rounded-lg">
       <figure className="relative mb-2 w-full h-[192px]">
-        <span className="absolute bottom-0 left-0 bg-card-color rounded-lg text-green-color text-xs m-2 px-3 py-0.5">
+        <span className="absolute bottom-0 left-0 bg-card-color rounded-lg text-green-color text-sm m-2 px-3 py-0.5">
           {data.data.category}
         </span>
         <img
@@ -10,7 +14,12 @@ const Card = (data) => {
           src={data.data.image}
           alt={data.data.title}
         />
-        <div className="absolute top-0 right-0 flex justify-center items-center bg-card-color text-green-color w-6 h-6 rounded-full m-2 p-1">
+        <div
+          className="absolute top-0 right-0 flex justify-center items-center bg-card-color text-green-color w-9 h-9 rounded-full m-2 p-1"
+          onClick={() => {
+            setCount(count + 1);
+          }}
+        >
           +
         </div>
       </figure>

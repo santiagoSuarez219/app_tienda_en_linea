@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { BiMenu } from "react-icons/bi";
 import { BiX } from "react-icons/bi";
-
-const stylesIcons = "w-full h-full text-white";
+import { BiSolidShoppingBag } from "react-icons/bi";
+import { AppContext } from "../../AppContext";
 
 const Navbar = () => {
+  const { count } = useContext(AppContext);
   const [openMenu, setOpenMenu] = useState(false);
   const [openMenuTablet, setOpenMenuTablet] = useState(false);
 
@@ -49,6 +50,12 @@ const Navbar = () => {
             <li>MyOrders</li>
             <li>MyAccount</li>
             <li>SignIn</li>
+            <div className="hidden lg:block p-2 bg-green-color rounded-full">
+              <BiSolidShoppingBag className=" text-white" />
+              <p className="absolute -right-3 -top-1 bg-card-color w-5 h-5 rounded-full flex items-center justify-center">
+                {count}
+              </p>
+            </div>
           </div>
         </ul>
       </ul>
