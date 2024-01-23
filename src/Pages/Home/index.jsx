@@ -12,9 +12,9 @@ const Home = () => {
   }, []);
   return (
     <Layaout>
-      <div className="w-full px-4 grid gap-4 md:gap-6 grid-cols-[repeat(auto-fit,minmax(224px,1fr))] justify-items-center">
+      <div className="w-full h-full overflow-y-auto px-4 grid gap-4 md:gap-6 grid-cols-[repeat(auto-fit,minmax(224px,1fr))] justify-items-center">
         {items.map((item) => (
-          <Card key={item.id} />
+          <Card key={item.id} data={item} />
         ))}
       </div>
     </Layaout>

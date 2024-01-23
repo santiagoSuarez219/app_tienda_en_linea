@@ -8,7 +8,7 @@ const stylesIcons = "w-full h-full text-white";
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
   return (
-    <nav className="w-full px-4 py-4 lg:px-8 lg:py-5 fixed top-0">
+    <nav className="w-full px-4 py-4 lg:px-8 lg:py-5 fixed top-0 ">
       <ul className="flex justify-between items-center">
         <li className="font-semibold text-lg">
           <NavLink to="/">Shopi</NavLink>
