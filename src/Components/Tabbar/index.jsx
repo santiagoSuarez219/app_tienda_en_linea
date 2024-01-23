@@ -1,12 +1,9 @@
+import { BiSolidShoppingBag } from "react-icons/bi";
+
 const Tabbar = () => {
   return (
-    <div className="w-full h-16 bg-card-color text-sm fixed bottom-0 flex items-center">
-      <ul className="w-full flex justify-around px-4">
-        <li>MyOrders</li>
-        <li>MyAccount</li>
-        <li>SignIn</li>
-        <li>Carrito</li>
-      </ul>
+    <div className="w-12 h-12 bg-green-color text-sm fixed bottom-4 right-4 rounded-full p-2 flex items-center">
+      <BiSolidShoppingBag className="w-full h-full text-white" />
     </div>
   );
 };

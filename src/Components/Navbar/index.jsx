@@ -26,18 +26,25 @@ const Navbar = () => {
           )}
         </li>
       </ul>
-      <ul
-        className={`fixed inset-0 bg-menu-color px-[5%] flex flex-col gap-6 items-center justify-center clip-circle-0 ${
+      <div
+        className={`fixed inset-0 bg-menu-color px-[5%] flex flex-col gap-6 justify-center clip-circle-0 ${
           openMenu && "clip-circle-full"
         } transition-[clip-path] duration-500 z-20`}
       >
-        <li>All</li>
-        <li>Clothes</li>
-        <li>Electronics</li>
-        <li>Furnitures</li>
-        <li>Toys</li>
-        <li>Other</li>
-      </ul>
+        <ul className="flex flex-col gap-6 items-center justify-center">
+          <li>All</li>
+          <li>Clothes</li>
+          <li>Electronics</li>
+          <li>Furnitures</li>
+          <li>Toys</li>
+          <li>Other</li>
+        </ul>
+        <ul className="flex flex-col gap-6 items-center justify-center border-t pt-6">
+          <li>MyOrders</li>
+          <li>MyAccount</li>
+          <li>SignIn</li>
+        </ul>
+      </div>
     </nav>
     // <nav className="flex justify-between items-center fixed top-0 w-full text-sm font-light px-8 py-5">
     //   <ul className="flex items-center gap-3">
