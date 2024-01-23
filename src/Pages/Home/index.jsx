@@ -1,4 +1,10 @@
+import Layaout from "../../Components/Layaout";
+
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <Layaout>
+      <h1>Home</h1>
+    </Layaout>
+  );
 };
 export default Home;
