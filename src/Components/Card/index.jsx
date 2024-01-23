@@ -3,12 +3,27 @@ import { HiOutlinePlus } from "react-icons/hi";
 import { AppContext } from "../../AppContext";
 
 const Card = (data) => {
-  const { setCount, count, openProductDetail, setProductToShow } =
-    useContext(AppContext);
+  const {
+    setCount,
+    count,
+    openProductDetail,
+    setProductToShow,
+    setCartProducts,
+    cartProducts,
+    openCheckoutSideMenu,
+    closeProductDetail,
+  } = useContext(AppContext);
 
   const showProduct = (productDetail) => {
     openProductDetail();
     setProductToShow(productDetail);
+  };
+
+  const addProductsToCart = (event, productData) => {
+    event.stopPropagation(); // Evita que se propague el evento, es decir, que no se ejecute el evento del padre
+    setCount(count + 1);
+    setCartProducts([...cartProducts, productData]);
+    closeProductDetail();
   };
 
   return (
@@ -27,9 +42,7 @@ const Card = (data) => {
         />
         <div
           className="absolute top-0 right-0 flex justify-center items-center bg-card-color text-green-color w-9 h-9 rounded-full m-2 p-1"
-          onClick={() => {
-            setCount(count + 1);
-          }}
+          onClick={(event) => addProductsToCart(event, data.data)}
         >
           <HiOutlinePlus className="h-6 w-6" />
         </div>

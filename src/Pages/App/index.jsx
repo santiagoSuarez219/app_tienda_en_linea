@@ -7,6 +7,7 @@ import SignIn from "../SignIn";
 import NotFound from "../NotFound";
 import Navbar from "../../Components/Navbar";
 import CardButton from "../../Components/CardButton";
+import CheckoutSideMenu from "../../Components/CheckoutSideMenu";
 import { AppProvider } from "../../AppContext";
 
 const AppRoutes = () => {
@@ -29,6 +30,7 @@ const App = () => {
         <AppRoutes />
         <CardButton />
         <Navbar />
+        <CheckoutSideMenu />
       </AppProvider>
     </BrowserRouter>
   );

@@ -6,7 +6,7 @@ import { BiSolidShoppingBag } from "react-icons/bi";
 import { AppContext } from "../../AppContext";
 
 const Navbar = () => {
-  const { count } = useContext(AppContext);
+  const { count, openCheckoutSideMenu } = useContext(AppContext);
   const [openMenu, setOpenMenu] = useState(false);
   const [openMenuTablet, setOpenMenuTablet] = useState(false);
 
@@ -16,7 +16,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="w-full px-4 md:px-6 py-4 lg:px-8 lg:py-5 fixed top-0 ">
+    <nav className="w-full px-4 md:px-6 py-4 lg:py-5 fixed top-0 ">
       <ul className="flex justify-between md:justify-between items-center lg:justify-start">
         <li className="font-semibold text-lg">
           <NavLink to="/">Shopi</NavLink>
@@ -51,7 +51,10 @@ const Navbar = () => {
             <li>MyAccount</li>
             <li>SignIn</li>
             <div className="hidden lg:block p-2 bg-green-color rounded-full">
-              <BiSolidShoppingBag className=" text-white" />
+              <BiSolidShoppingBag
+                className=" text-white"
+                onClick={() => openCheckoutSideMenu()}
+              />
               <p className="absolute -right-3 -top-1 bg-card-color w-5 h-5 rounded-full flex items-center justify-center">
                 {count}
               </p>

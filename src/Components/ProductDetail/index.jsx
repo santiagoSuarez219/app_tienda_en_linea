@@ -10,13 +10,13 @@ const ProductDetail = () => {
     <aside
       className={`${
         isProductDetailOpen ? "flex" : "hidden"
-      } w-ful md:w-[360px] h-[calc(100vh-72px)] flex-col fixed right-0 border border-gray-color rounded-lg bg-card-color overflow-y-auto z-20`}
+      } w-full md:w-[360px] h-[calc(100vh-72px)] flex-col fixed right-0 border border-gray-color rounded-lg bg-card-color overflow-y-auto z-20`}
     >
       <div className="flex justify-between items-center p-4 lg:p-6">
         <h2 className="font-medium text-lg lg:text-xl">Detail</h2>
         <div>
           <HiOutlineX
-            className="h-6 w-6 text-white"
+            className="h-6 w-6 text-white cursor-pointer"
             onClick={() => closeProductDetail()}
           />
         </div>
