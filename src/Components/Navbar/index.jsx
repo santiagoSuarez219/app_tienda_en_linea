@@ -7,44 +7,51 @@ const stylesIcons = "w-full h-full text-white";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [openMenuTablet, setOpenMenuTablet] = useState(false);
+
+  const toggleMenu = () => {
+    setOpenMenu((state) => !state);
+    setOpenMenuTablet((state) => !state);
+  };
+
   return (
-    <nav className="w-full px-4 py-4 lg:px-8 lg:py-5 fixed top-0 ">
-      <ul className="flex justify-between items-center">
+    <nav className="w-full px-4 md:px-6 py-4 lg:px-8 lg:py-5 fixed top-0 ">
+      <ul className="flex justify-between md:justify-between items-center lg:justify-start">
         <li className="font-semibold text-lg">
           <NavLink to="/">Shopi</NavLink>
         </li>
         <li
-          className="w-10 h-10 bg-green-color rounded-lg p-2 cursor-pointer transition-all z-40"
-          onClick={() => {
-            setOpenMenu((state) => !state);
-          }}
+          className="w-10 h-10 bg-green-color rounded-lg p-2 cursor-pointer transition-all z-40 lg:hidden md:order-3"
+          onClick={toggleMenu}
         >
           {openMenu ? (
-            <BiX className={stylesIcons} />
+            <BiX className="w-full h-full text-white" />
           ) : (
-            <BiMenu className={stylesIcons} />
+            <BiMenu className="w-full h-full text-white" />
           )}
         </li>
-      </ul>
-      <div
-        className={`fixed inset-0 bg-menu-color px-[5%] flex flex-col gap-6 justify-center clip-circle-0 ${
-          openMenu && "clip-circle-full"
-        } transition-[clip-path] duration-500 z-20`}
-      >
-        <ul className="flex flex-col gap-6 items-center justify-center">
+        <ul
+          className={`fixed inset-0 bg-menu-color px-[5%] flex flex-col gap-4 justify-center items-center clip-circle-0 ${
+            openMenu && `clip-circle-full`
+          } transition-[clip-path] duration-500 z-20 md:clip-circle-full md:relative md:flex-row md:bg-transparent md:px-4 lg:w-full`}
+        >
           <li>All</li>
           <li>Clothes</li>
           <li>Electronics</li>
           <li>Furnitures</li>
           <li>Toys</li>
           <li>Other</li>
+          <div
+            className={`w-full border-t lg:border-t-0 flex lg:flex-row  flex-col gap-4 items-center justify-center pt-4 lg:flex lg:justify-end md:border-t-0 md:fixed lg:relative md:w-auto lg:w-full md:top-16 lg:top-0 md:right-4 lg:right-0 md:bg-card-color lg:bg-transparent md:p-4 lg:p-0 md:rounded-lg ${
+              !openMenuTablet && `md:hidden`
+            }`}
+          >
+            <li>MyOrders</li>
+            <li>MyAccount</li>
+            <li>SignIn</li>
+          </div>
         </ul>
-        <ul className="flex flex-col gap-6 items-center justify-center border-t pt-6">
-          <li>MyOrders</li>
-          <li>MyAccount</li>
-          <li>SignIn</li>
-        </ul>
-      </div>
+      </ul>
     </nav>
     // <nav className="flex justify-between items-center fixed top-0 w-full text-sm font-light px-8 py-5">
     //   <ul className="flex items-center gap-3">
