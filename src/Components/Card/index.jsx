@@ -49,6 +49,11 @@ const Card = (data) => {
     }
   };
 
+  //Clothing Men https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+  //Joyeria https://images.pexels.com/photos/2735970/pexels-photo-2735970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+  //Electronics https://images.pexels.com/photos/2047905/pexels-photo-2047905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+  //Clothes Woman https://images.pexels.com/photos/3586020/pexels-photo-3586020.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+
   return (
     <div
       className="bg-card-color cursor-pointer w-full mx-auto rounded-lg"
@@ -63,7 +68,7 @@ const Card = (data) => {
         </span>
         <img
           className="w-full h-full aspect-square object-cover rounded-t-lg"
-          src="https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          src="https://images.pexels.com/photos/3586020/pexels-photo-3586020.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt={data.data.title}
         />
         {renderIcon(data.data.id)}
