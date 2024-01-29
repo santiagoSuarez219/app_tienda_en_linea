@@ -21,10 +21,12 @@ const Home = () => {
           className="rounded-lg border bg-card-color text-gray-color border-gray-color w-full p-4 focus:outline-none text-center"
         />
       </div>
-      <div className="w-full max-w-screen-xl grid gap-4 md:gap-6 md:px-6 px-4 overflow-y-auto grid-cols-[repeat(auto-fit,minmax(224px,1fr))]">
-        {items.map((item) => (
-          <Card key={item.id} data={item} />
-        ))}
+      <div className="w-full h-[calc(100vh-70px-90px)] flex items-center justify-center overflow-y-auto mb-6">
+        <div className="w-full h-full max-w-screen-xl grid gap-4 md:gap-6 md:px-9 px-4 grid-cols-[repeat(auto-fit,minmax(224px,1fr))]">
+          {items.map((item) => (
+            <Card key={item.id} data={item} />
+          ))}
+        </div>
       </div>
       <ProductDetail />
     </Layaout>

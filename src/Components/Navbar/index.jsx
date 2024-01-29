@@ -48,11 +48,11 @@ const Navbar = () => {
             <li>MyOrders</li>
             <li>MyAccount</li>
             <li>SignIn</li>
-            <div className="hidden lg:block p-2 bg-green-color rounded-full">
-              <BiSolidShoppingBag
-                className=" text-white"
-                onClick={() => openCheckoutSideMenu()}
-              />
+            <div
+              className="hidden lg:block p-2 bg-green-color rounded-full cursor-pointer"
+              onClick={() => openCheckoutSideMenu()}
+            >
+              <BiSolidShoppingBag className=" text-white" />
               <p className="absolute -right-3 -top-1 bg-card-color w-5 h-5 rounded-full flex items-center justify-center text-gray-color">
                 {cartProducts.length}
               </p>

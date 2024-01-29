@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AppContext } from "../../AppContext";
 import { HiOutlineX } from "react-icons/hi";
 import OrderCard from "../OrderCard";
+import { totalPrice } from "../../utils";
 
 const CheckoutSideMenu = () => {
   const {
@@ -20,7 +21,7 @@ const CheckoutSideMenu = () => {
     <aside
       className={`${
         isCheckoutSideMenuOpen ? "flex" : "hidden"
-      } w-full md:w-[360px] h-[calc(100vh-72px)] flex flex-col fixed right-0 top-[72px] border border-gray-color rounded-lg bg-card-color overflow-y-auto `}
+      } w-full md:w-[360px] h-[calc(100vh-72px)] flex flex-col fixed right-0 top-[72px] border border-gray-color rounded-lg bg-card-color overflow-y-auto`}
     >
       <div className="flex justify-between items-center p-6">
         <h2 className="font-medium text-lg md:text-xl text-gray-color">
@@ -35,7 +36,7 @@ const CheckoutSideMenu = () => {
           />
         </div>
       </div>
-      <div className="px-6 overflow-y-scroll">
+      <div className="px-6 overflow-visible">
         {cartProducts.map((product) => (
           <OrderCard
             key={product.id}
@@ -46,6 +47,14 @@ const CheckoutSideMenu = () => {
             handleDelete={handleDelete}
           />
         ))}
+      </div>
+      <div className="px-6 py-4 text-gray-color">
+        <p className="flex justify-between items-center">
+          <span className="text-lg">Total:</span>
+          <span className="font-semibold text-green-color text-2xl">
+            ${totalPrice(cartProducts)}
+          </span>
+        </p>
       </div>
     </aside>
   );
