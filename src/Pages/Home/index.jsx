@@ -5,22 +5,13 @@ import ProductDetail from "../../Components/ProductDetail";
 import { AppContext } from "../../AppContext";
 
 const Home = () => {
-  const { items, setSearchByTitle, searchByTitle, filteredItems } =
-    useContext(AppContext);
-
-  useEffect(() => {
-    setSearchByTitle(null);
-  }, []);
+  const { items, setSearchByTitle, filteredItems } = useContext(AppContext);
 
   const renderView = () => {
-    if (searchByTitle?.length > 0) {
-      if (filteredItems?.length > 0) {
-        return filteredItems?.map((item) => <Card key={item.id} data={item} />);
-      } else {
-        return <div>{"We don't have anything"}</div>;
-      }
+    if (filteredItems?.length > 0) {
+      return filteredItems?.map((item) => <Card key={item.id} data={item} />);
     } else {
-      return items?.map((item) => <Card key={item.id} data={item} />);
+      return <div>{"We don't have anything :("}</div>;
     }
   };
 
@@ -32,11 +23,13 @@ const Home = () => {
           type="text"
           placeholder="Search a product"
           className="rounded-lg border bg-card-color text-gray-color border-gray-color w-full p-4 focus:outline-none text-center"
-          onChange={(event) => setSearchByTitle(event.target.value)}
+          onChange={(event) => {
+            setSearchByTitle(event.target.value);
+          }}
         />
       </div>
       <div className="w-full h-[calc(100vh-70px-90px)] flex items-center justify-center overflow-y-auto mb-6">
-        <div className="w-full h-full max-w-screen-xl grid gap-4 md:gap-6 md:px-9 px-4 lg:grid-cols-4 md:grid-cols-3 grid-rows-[repeat(auto-fit,125px)] md:grid-rows-[repeat(auto-fit,244px)] ">
+        <div className="w-full h-full max-w-screen-xl grid gap-4 md:gap-6 md:px-9 px-4 lg:grid-cols-4 md:grid-cols-3 grid-rows-[repeat(auto-fit,125px)] md:grid-rows-[repeat(auto-fit,290px)] ">
           {renderView()}
         </div>
       </div>

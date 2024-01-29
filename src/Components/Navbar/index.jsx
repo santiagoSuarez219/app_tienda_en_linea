@@ -6,7 +6,8 @@ import { BiSolidShoppingBag } from "react-icons/bi";
 import { AppContext } from "../../AppContext";
 
 const Navbar = () => {
-  const { openCheckoutSideMenu, cartProducts } = useContext(AppContext);
+  const { openCheckoutSideMenu, cartProducts, setSearchByCategory } =
+    useContext(AppContext);
   const [openMenu, setOpenMenu] = useState(false);
   const [openMenuTablet, setOpenMenuTablet] = useState(false);
 
@@ -38,10 +39,34 @@ const Navbar = () => {
             openMenu && `clip-circle-full`
           } transition-[clip-path] duration-500 z-20 md:clip-circle-full md:relative md:flex-row md:bg-transparent md:px-4 lg:w-full md:text-sm`}
         >
-          <li>All</li>
-          <li>Clothes</li>
-          <li>Electronics</li>
-          <li>Jewelery</li>
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+            onClick={() => setSearchByCategory()}
+          >
+            All
+          </NavLink>
+          <NavLink
+            to="/clothing"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+            onClick={() => setSearchByCategory("clothing")}
+          >
+            Clothing
+          </NavLink>
+          <NavLink
+            to="/electronics"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+            onClick={() => setSearchByCategory("electronics")}
+          >
+            Electronis
+          </NavLink>
+          <NavLink
+            to="/jewelery"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+            onClick={() => setSearchByCategory("jewelery")}
+          >
+            Jewelery
+          </NavLink>
           <div
             className={`w-full border-t lg:border-t-0 flex lg:flex-row  flex-col gap-4 items-center justify-center pt-4 lg:flex lg:justify-end md:border-t-0 md:fixed lg:relative md:w-auto lg:w-full md:top-16 lg:top-0 md:right-4 lg:right-0 md:bg-card-color lg:bg-transparent md:p-4 lg:p-0 md:rounded-lg ${
               !openMenuTablet && `md:hidden`
