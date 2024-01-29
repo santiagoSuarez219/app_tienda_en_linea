@@ -1,8 +1,9 @@
 import { useContext } from "react";
-import { AppContext } from "../../AppContext";
+import { Link } from "react-router-dom";
 import { HiOutlineX } from "react-icons/hi";
-import OrderCard from "../OrderCard";
 import { totalPrice } from "../../utils";
+import { AppContext } from "../../AppContext";
+import OrderCard from "../OrderCard";
 
 const CheckoutSideMenu = () => {
   const {
@@ -10,11 +11,25 @@ const CheckoutSideMenu = () => {
     closeCheckoutSideMenu,
     cartProducts,
     setCartProducts,
+    order,
+    setOrder,
   } = useContext(AppContext);
 
   const handleDelete = (id) => {
     const filteredProducts = cartProducts.filter((product) => product.id != id);
     setCartProducts(filteredProducts);
+  };
+
+  const handleCheckout = () => {
+    const orderToAdd = {
+      date: "01.02.23",
+      products: cartProducts,
+      totalProducts: cartProducts.length,
+      totalPrice: totalPrice(cartProducts),
+    };
+
+    setOrder([...order, orderToAdd]);
+    setCartProducts([]);
   };
 
   return (
@@ -55,6 +70,14 @@ const CheckoutSideMenu = () => {
             ${totalPrice(cartProducts)}
           </span>
         </p>
+        <Link to="my-orders/last">
+          <button
+            className="mt-2 bg-green-color py-3 text-white font-medium w-full rounded-lg"
+            onClick={() => handleCheckout()}
+          >
+            Checkout
+          </button>
+        </Link>
       </div>
     </aside>
   );

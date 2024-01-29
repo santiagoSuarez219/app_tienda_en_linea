@@ -2,6 +2,16 @@ import { HiOutlineX } from "react-icons/hi";
 
 const OrderCard = (props) => {
   const { id, title, imageUrl, price, handleDelete } = props;
+
+  let renderHiOutlineX;
+  if (handleDelete) {
+    renderHiOutlineX = (
+      <HiOutlineX
+        className="h-6 w-6 cursor-pointer"
+        onClick={() => handleDelete(id)}
+      />
+    );
+  }
   return (
     <div className="flex justify-between items-center mb-3 text-gray-color">
       <div className="flex items-center gap-2">
@@ -19,12 +29,7 @@ const OrderCard = (props) => {
           </p>
         </article>
       </div>
-      <div className="items-center gap-2">
-        <HiOutlineX
-          className="h-6 w-6 cursor-pointer"
-          onClick={() => handleDelete(id)}
-        />
-      </div>
+      <div className="items-center gap-2">{renderHiOutlineX}</div>
     </div>
   );
 };
