@@ -18,7 +18,11 @@ const Navbar = () => {
 
   const filterByCategory = (category) => {
     setSearchByCategory(category);
-    setOpenMenu((state) => !state);
+    setOpenMenu(false);
+  };
+
+  const cleanFilters = () => {
+    setSearchByCategory(null);
   };
 
   const activeStyle = "text-green-color font-semibold";
@@ -26,7 +30,7 @@ const Navbar = () => {
   return (
     <nav className="w-full px-4 md:px-6 py-4 lg:py-5 fixed top-0 ">
       <ul className="flex justify-between md:justify-between items-center lg:justify-start">
-        <li className="font-semibold text-lg">
+        <li className="font-semibold text-lg" onClick={cleanFilters}>
           <NavLink to="/">Shopi</NavLink>
         </li>
         <li

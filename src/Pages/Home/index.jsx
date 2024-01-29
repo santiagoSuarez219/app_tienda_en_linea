@@ -5,7 +5,8 @@ import ProductDetail from "../../Components/ProductDetail";
 import { AppContext } from "../../AppContext";
 
 const Home = () => {
-  const { items, setSearchByTitle, filteredItems } = useContext(AppContext);
+  const { items, setSearchByTitle, filteredItems, setSearchByCategory } =
+    useContext(AppContext);
 
   const renderView = () => {
     if (filteredItems?.length > 0) {
