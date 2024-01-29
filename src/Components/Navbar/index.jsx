@@ -16,6 +16,11 @@ const Navbar = () => {
     setOpenMenuTablet((state) => !state);
   };
 
+  const filterByCategory = (category) => {
+    setSearchByCategory(category);
+    toggleMenu();
+  };
+
   const activeStyle = "text-green-color font-semibold";
 
   return (
@@ -42,28 +47,30 @@ const Navbar = () => {
           <NavLink
             to="/"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
-            onClick={() => setSearchByCategory()}
+            onClick={() => {
+              filterByCategory(null);
+            }}
           >
             All
           </NavLink>
           <NavLink
             to="/clothing"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
-            onClick={() => setSearchByCategory("clothing")}
+            onClick={() => filterByCategory("clothing")}
           >
             Clothing
           </NavLink>
           <NavLink
             to="/electronics"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
-            onClick={() => setSearchByCategory("electronics")}
+            onClick={() => filterByCategory("electronics")}
           >
             Electronis
           </NavLink>
           <NavLink
             to="/jewelery"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
-            onClick={() => setSearchByCategory("jewelery")}
+            onClick={() => filterByCategory("jewelery")}
           >
             Jewelery
           </NavLink>
@@ -78,6 +85,7 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   isActive ? activeStyle : undefined
                 }
+                onClick={toggleMenu}
               >
                 My Orders
               </NavLink>
@@ -97,46 +105,6 @@ const Navbar = () => {
         </ul>
       </ul>
     </nav>
-    // <nav className="flex justify-between items-center fixed top-0 w-full text-sm font-light px-8 py-5">
-    //   <ul className="flex items-center gap-3">
-    //     <li className="font-semibold text-lg">
-    //       <NavLink to="/">Shopi</NavLink>
-    //     </li>
-    //     <li>
-    //       <NavLink to="/">All</NavLink>
-    //     </li>
-    //     <li>
-    //       <NavLink to="/clothes">Clothes</NavLink>
-    //     </li>
-    //     <li>
-    //       <NavLink to="/electronics">Electronics</NavLink>
-    //     </li>
-    //     <li>
-    //       <NavLink to="/furnitures">Furnitures</NavLink>
-    //     </li>
-    //     <li>
-    //       <NavLink to="/toys">Toys</NavLink>
-    //     </li>
-    //     <li>
-    //       <NavLink to="/others">Other</NavLink>
-    //     </li>
-    //   </ul>
-    //   <ul className="flex items-center gap-3">
-    //     <li>santiago8628@gmail.com</li>
-    //     <li>
-    //       <NavLink to="/">My Orders</NavLink>
-    //     </li>
-    //     <li>
-    //       <NavLink to="/">My Account</NavLink>
-    //     </li>
-    //     <li>
-    //       <NavLink to="/">Sign In</NavLink>
-    //     </li>
-    //     <li>
-    //       <NavLink to="/">Carrito</NavLink>
-    //     </li>
-    //   </ul>
-    // </nav>
   );
 };
 export default Navbar;
