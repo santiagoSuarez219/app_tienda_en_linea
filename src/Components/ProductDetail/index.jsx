@@ -5,7 +5,6 @@ import { AppContext } from "../../AppContext";
 const ProductDetail = () => {
   const { isProductDetailOpen, closeProductDetail, productToShow } =
     useContext(AppContext);
-  console.log(productToShow);
   return (
     <aside
       className={`${

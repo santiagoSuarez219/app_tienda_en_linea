@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { HiOutlinePlus } from "react-icons/hi";
 import { HiCheck } from "react-icons/hi";
 import { AppContext } from "../../AppContext";
@@ -12,27 +12,11 @@ const Card = (data) => {
     openCheckoutSideMenu,
     closeProductDetail,
   } = useContext(AppContext);
-  const { title, category, price } = data.data;
-
-  const selectImage = (category) => {
-    if (category === "men's clothing") {
-      return "https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-    }
-    if (category === "jewelery") {
-      return "https://images.pexels.com/photos/2735970/pexels-photo-2735970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-    }
-    if (category === "electronics") {
-      return "https://images.pexels.com/photos/2047905/pexels-photo-2047905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-    }
-    if (category === "women's clothing") {
-      return "https://images.pexels.com/photos/3586020/pexels-photo-3586020.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-    }
-    return "https://images.pexels.com/photos/10850828/pexels-photo-10850828.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-  };
+  const { title, category, price, image } = data.data;
 
   const showProduct = (productDetail) => {
     openProductDetail();
-    setProductToShow({ ...productDetail, image: selectImage(category) });
+    setProductToShow(productDetail);
   };
 
   const renderIcon = (id) => {
@@ -59,11 +43,9 @@ const Card = (data) => {
 
   const addProductsToCart = (event, productData) => {
     event.stopPropagation();
-    setCartProducts([
-      ...cartProducts,
-      { ...productData, image: selectImage(category) },
-    ]);
+    setCartProducts([...cartProducts, productData]);
     closeProductDetail();
+    openCheckoutSideMenu();
   };
 
   return (
@@ -74,7 +56,7 @@ const Card = (data) => {
       <figure className="w-2/5 md:relative md:w-full md:h-[192px]">
         <img
           className="h-full w-full aspect-square object-cover rounded-lg md:rounded-b-none"
-          src={selectImage(category)}
+          src={image}
           alt={title}
         />
         {renderIcon(data.data.id)}

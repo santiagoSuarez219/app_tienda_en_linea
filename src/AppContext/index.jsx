@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import { selectImage } from "../utils";
 
 const AppContext = createContext();
 
@@ -53,7 +54,11 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
-      .then((data) => setItems(data));
+      .then((data) =>
+        setItems(
+          data.map((item) => ({ ...item, image: selectImage(item.category) }))
+        )
+      );
   }, []);
 
   useEffect(() => {
