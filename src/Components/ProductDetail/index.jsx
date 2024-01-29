@@ -13,10 +13,12 @@ const ProductDetail = () => {
       } w-full md:w-[360px] h-[calc(100vh-72px)] flex-col fixed right-0 border border-gray-color rounded-lg bg-card-color overflow-y-auto z-20`}
     >
       <div className="flex justify-between items-center p-4 lg:p-6">
-        <h2 className="font-medium text-lg lg:text-xl">Detail</h2>
+        <h2 className="font-medium text-lg lg:text-xl text-gray-color">
+          Detail
+        </h2>
         <div>
           <HiOutlineX
-            className="h-6 w-6 text-white cursor-pointer"
+            className="h-6 w-6 text-gray-color cursor-pointer"
             onClick={() => closeProductDetail()}
           />
         </div>
@@ -29,13 +31,13 @@ const ProductDetail = () => {
         />
       </figure>
       <p className="flex flex-col p-4 lg:p-6 ">
-        <span className="font-medium text-xl lg:text-2xl mb-1 lg:mb-2">
+        <span className="font-semibold text-xl lg:text-2xl mb-1 lg:mb-2 text-green-color">
           ${productToShow.price}
         </span>
-        {/* <span className="font-medium text-sm lg:text-md">
+        <span className="font-medium text-sm lg:text-md pb-2">
           {productToShow.title}
-        </span> */}
-        <span className="font-light text-xs lg:text-sm">
+        </span>
+        <span className="font-light text-gray-color text-xs lg:text-sm">
           {productToShow.description}
         </span>
       </p>

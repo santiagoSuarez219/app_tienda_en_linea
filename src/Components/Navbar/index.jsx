@@ -6,7 +6,7 @@ import { BiSolidShoppingBag } from "react-icons/bi";
 import { AppContext } from "../../AppContext";
 
 const Navbar = () => {
-  const { count, openCheckoutSideMenu } = useContext(AppContext);
+  const { openCheckoutSideMenu, cartProducts } = useContext(AppContext);
   const [openMenu, setOpenMenu] = useState(false);
   const [openMenuTablet, setOpenMenuTablet] = useState(false);
 
@@ -39,9 +39,7 @@ const Navbar = () => {
           <li>All</li>
           <li>Clothes</li>
           <li>Electronics</li>
-          <li>Furnitures</li>
-          <li>Toys</li>
-          <li>Other</li>
+          <li>Jewelery</li>
           <div
             className={`w-full border-t lg:border-t-0 flex lg:flex-row  flex-col gap-4 items-center justify-center pt-4 lg:flex lg:justify-end md:border-t-0 md:fixed lg:relative md:w-auto lg:w-full md:top-16 lg:top-0 md:right-4 lg:right-0 md:bg-card-color lg:bg-transparent md:p-4 lg:p-0 md:rounded-lg ${
               !openMenuTablet && `md:hidden`
@@ -56,7 +54,7 @@ const Navbar = () => {
                 onClick={() => openCheckoutSideMenu()}
               />
               <p className="absolute -right-3 -top-1 bg-card-color w-5 h-5 rounded-full flex items-center justify-center text-gray-color">
-                {count}
+                {cartProducts.length}
               </p>
             </div>
           </div>

@@ -1,12 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { HiOutlinePlus } from "react-icons/hi";
 import { HiCheck } from "react-icons/hi";
 import { AppContext } from "../../AppContext";
 
 const Card = (data) => {
   const {
-    setCount,
-    count,
     openProductDetail,
     setProductToShow,
     setCartProducts,
@@ -14,6 +12,7 @@ const Card = (data) => {
     openCheckoutSideMenu,
     closeProductDetail,
   } = useContext(AppContext);
+  const { title, category, price } = data.data;
 
   const selectImage = (category) => {
     if (category === "men's clothing") {
@@ -33,7 +32,7 @@ const Card = (data) => {
 
   const showProduct = (productDetail) => {
     openProductDetail();
-    setProductToShow(productDetail);
+    setProductToShow({ ...productDetail, image: selectImage(category) });
   };
 
   const renderIcon = (id) => {
@@ -42,14 +41,14 @@ const Card = (data) => {
 
     if (isInCart) {
       return (
-        <div className="hidden md:flex absolute top-0 right-0 justify-center items-center bg-card-color text-green-color w-9 h-9 rounded-full m-2 p-1">
+        <div className="flex absolute bottom-0 md:top-0 right-0 justify-center items-center bg-card-color text-green-color md:w-9 md:h-9 w-8 h-8 rounded-full m-2 p-1">
           <HiCheck className="h-6 w-6" />
         </div>
       );
     } else {
       return (
         <div
-          className="hidden md:flex absolute top-0 right-0 justify-center items-center bg-card-color text-green-color w-9 h-9 rounded-full m-2 p-1"
+          className="flex absolute bottom-0 md:top-0 right-0 justify-center items-center bg-card-color text-green-color md:w-9 md:h-9 w-8 h-8 rounded-full m-2 p-1"
           onClick={(event) => addProductsToCart(event, data.data)}
         >
           <HiOutlinePlus className="h-6 w-6" />
@@ -60,43 +59,37 @@ const Card = (data) => {
 
   const addProductsToCart = (event, productData) => {
     event.stopPropagation();
-    setCount(count + 1);
-    setCartProducts([...cartProducts, productData]);
+    setCartProducts([
+      ...cartProducts,
+      { ...productData, image: selectImage(category) },
+    ]);
     closeProductDetail();
   };
 
   return (
-    <aside className="relative w-full md:bg-card-color mx-auto flex md:flex-col cursor-pointer md:rounded-lg">
+    <aside
+      className="relative w-full md:bg-card-color mx-auto flex md:flex-col cursor-pointer md:rounded-lg"
+      onClick={() => showProduct(data.data)}
+    >
       <figure className="w-2/5 md:relative md:w-full md:h-[192px]">
         <img
           className="h-full w-full aspect-square object-cover rounded-lg md:rounded-b-none"
-          src={selectImage(data.data.category)}
-          alt={data.data.title}
+          src={selectImage(category)}
+          alt={title}
         />
         {renderIcon(data.data.id)}
         <span className="hidden md:block absolute top-0 left-0 bg-card-color rounded-lg text-green-color text-base font-normal m-2 px-3 py-0.5">
-          {data.data.category}
+          {category}
         </span>
         <span className="hidden md:block absolute bottom-0 right-0 bg-card-color rounded-lg text-green-color text-xl md:text-lg font-semibold m-2 px-3 py-0.5">
-          {data.data.price}
+          {price}
         </span>
       </figure>
       <article className="w-3/5 md:w-full text-sm pl-2 text-gray-color">
-        <h1 className="md:pt-1 md:pb-2 md:px-2 md:font-medium">
-          {data.data.title}
-        </h1>
-        <p className="font-bold text-lg md:hidden"> {data.data.price} $</p>
-        <p className="text-xs text-green-color md:hidden">
-          {" "}
-          {data.data.category}
-        </p>
+        <h1 className="md:pt-1 md:pb-2 md:px-2 md:font-medium">{title}</h1>
+        <p className="font-bold text-lg md:hidden"> {price} $</p>
+        <p className="text-xs text-green-color md:hidden"> {category}</p>
       </article>
-      <div
-        className="md:hidden absolute bottom-0 right-0 flex justify-center items-center bg-card-color text-green-color w-9 h-9 rounded-full p-1"
-        onClick={(event) => addProductsToCart(event, data.data)}
-      >
-        <HiOutlinePlus className="h-6 w-6" />
-      </div>
     </aside>
   );
 };
