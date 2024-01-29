@@ -29,6 +29,7 @@ const CheckoutSideMenu = () => {
     };
 
     setOrder([...order, orderToAdd]);
+    closeCheckoutSideMenu();
     setCartProducts([]);
   };
 

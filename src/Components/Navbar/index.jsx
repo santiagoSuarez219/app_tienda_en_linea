@@ -15,6 +15,8 @@ const Navbar = () => {
     setOpenMenuTablet((state) => !state);
   };
 
+  const activeStyle = "text-green-color font-semibold";
+
   return (
     <nav className="w-full px-4 md:px-6 py-4 lg:py-5 fixed top-0 ">
       <ul className="flex justify-between md:justify-between items-center lg:justify-start">
@@ -45,7 +47,16 @@ const Navbar = () => {
               !openMenuTablet && `md:hidden`
             }`}
           >
-            <li>MyOrders</li>
+            <li>
+              <NavLink
+                to="/my-orders"
+                className={({ isActive }) =>
+                  isActive ? activeStyle : undefined
+                }
+              >
+                My Orders
+              </NavLink>
+            </li>
             <li>MyAccount</li>
             <li>SignIn</li>
             <div
