@@ -18,7 +18,7 @@ const Navbar = () => {
 
   const filterByCategory = (category) => {
     setSearchByCategory(category);
-    toggleMenu();
+    setOpenMenu((state) => !state);
   };
 
   const activeStyle = "text-green-color font-semibold";
