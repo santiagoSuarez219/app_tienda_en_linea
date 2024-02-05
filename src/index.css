@@ -1,3 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #171717;
+  color: white;
+}
+
+@layer utilities {
+  .clip-circle-0 {
+    clip-path: circle(0% at top right);
+  }
+
+  .clip-circle-full {
+    clip-path: circle(150% at top right);
+  }
+}
